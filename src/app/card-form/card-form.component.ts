@@ -13,7 +13,10 @@ export class CardFormComponent implements OnInit {
       Validators.required, 
       Validators.minLength(3),
       Validators.maxLength(5)
-    ])
+    ]),
+    cardNumber: new FormControl(''),
+    expiration: new FormControl(''),
+    securityCode: new FormControl(''),
   })
 
   constructor() { 
@@ -23,6 +26,9 @@ export class CardFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(){
+    console.log(this.cardForm.value)
+  }
 }
 
 //more info on control form on angular.io/api/forms/AbstractControl
