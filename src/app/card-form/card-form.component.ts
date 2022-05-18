@@ -12,9 +12,14 @@ export class CardFormComponent implements OnInit {
     name: new FormControl('', [Validators.required, Validators.min(3)])
   })
 
-  constructor() { }
+  constructor() { 
+    console.log(this.cardForm.get('name'))
+  }
 
   ngOnInit(): void {
   }
 
 }
+
+//more info on control form on angular.io/api/forms/AbstractControl
+//properties like valid, invalid, touched, pending, disable, pristine...
