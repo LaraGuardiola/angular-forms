@@ -1,0 +1,5 @@
+<form [formGroup]="cardForm">
+    <input formControlName="name">
+</form>
+<div>Form Contents: {{ cardForm.value | json }}</div>
+<div>Form Contents: {{ cardForm.valid }}</div>
