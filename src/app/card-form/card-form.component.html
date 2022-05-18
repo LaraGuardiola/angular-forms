@@ -1,11 +1,19 @@
 <form [formGroup]="cardForm">
     <input formControlName="name">
-    <ng-container *ngIf="cardForm.controls['name'].errors">
+    <ng-container 
+        *ngIf="
+            cardForm.controls['name'].touched &&
+            cardForm.controls['name'].dirty &&
+            cardForm.controls['name'].errors
+        "
+    >
         <div>
             Value is required
         </div>
     </ng-container>
 </form>
+<!-- using .controls[key] we can access many properties of FormGroup to validate forms-->
+<!-- setting up quick tests-->
 
 <div>Form Contents: {{ cardForm.value | json }}</div>
 <div>Form is valid?: {{ cardForm.valid }}</div>
