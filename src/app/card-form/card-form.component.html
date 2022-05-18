@@ -4,7 +4,7 @@
     <app-input label="Card Number" [control]="$any(cardForm.get('cardNumber'))"></app-input>
     <app-input label="Expiration" [control]="$any(cardForm.get('expiration'))"></app-input>
     <app-input label="Security Code" [control]="$any(cardForm.get('securityCode'))"></app-input>
-    <button type="submit">Submit</button>
+    <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
 </form>
 
 <!-- using [key] we can access many properties of FormGroup to validate forms-->
@@ -12,4 +12,4 @@
 
 <div>Form Contents: {{ cardForm.value | json }} </div>
 <div>Form is valid?: {{ cardForm.valid }} </div>
-<div>Errors around name: {{ cardForm.controls['name'].errors | json}} </div>
+<div>Errors around credit card: {{ cardForm.controls['cardNumber'].errors | json}} </div>
