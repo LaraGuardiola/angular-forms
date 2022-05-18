@@ -1,6 +1,6 @@
 <!-- formControlName links to the name key of the property of the class-->
 <form [formGroup]="cardForm">
-    <app-input [control]="$any(cardForm.get('name'))"></app-input>
+    <app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>
 </form>
 <!-- using .controls[key] we can access many properties of FormGroup to validate forms-->
 <!-- setting up quick tests-->

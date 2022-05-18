@@ -1,19 +1,26 @@
 <!-- formControlName links to the name key of the property of the class-->
-<input [formControl]="control">
-    <ng-container 
-        *ngIf="
-            control.touched &&
-            control.dirty &&
-            control.errors
-        "
-    >
-        <div>
+<div class="field">
+    <label class="label">{{ label }}</label>
+    <div class="control">
+        <input [ngClass]="{ 'is-danger': showErrors() }"class="input" [formControl]="control"/>
+    </div>
+    <ng-container *ngIf="showErrors()">
+        <div *ngIf="control.errors!['required']" class="help is-danger">
             Value is required
         </div>
+        <div *ngIf="control.errors!['minlength']" class="help is-danger">
+            Value entered is {{control.errors!['minlength']!.actualLength}} / Min: 3
+        </div>
+        <div *ngIf="control.errors!['maxlength']" class="help is-danger">
+            Value entered is {{control.errors!['maxlength']!.actualLength}}
+            / Max 5
+        </div>
     </ng-container>
+</div>
+
 <!-- using [key] we can access many properties of FormGroup to validate forms-->
 <!-- setting up quick tests-->
 
-<div>Form Contents: {{ control.value | json }}</div>
-<div>Form is valid?: {{ control.valid }}</div>
+<div>Form Contents: {{ control.value | json }} </div>
+<div>Form is valid?: {{ control.valid }} </div>
 <div>Errors around name: {{ control.errors | json}} </div>
