@@ -36,10 +36,10 @@ export class CardFormComponent implements OnInit {
     console.log(this.cardForm.value)
   }
 
-  //tryin to make a custom validator
+  //trying to make a custom validator
   //VALIDATES IF IT'S A VALID CARD OR NOT (WORKS!)
   ccValidator(): ValidatorFn {
-    return (control: AbstractControl) : { [key: string]: any } | null =>  {
+    return (control: AbstractControl) : { [key: string]: string } | null =>  {
       return this.CcValidationService.luhnCheck(control.value) ? null : { 'ccValidator': control.value }
     }
   }
