@@ -1,1 +1,19 @@
-<p>input works!</p>
+<!-- formControlName links to the name key of the property of the class-->
+<input [formControl]="control">
+    <ng-container 
+        *ngIf="
+            control.touched &&
+            control.dirty &&
+            control.errors
+        "
+    >
+        <div>
+            Value is required
+        </div>
+    </ng-container>
+<!-- using [key] we can access many properties of FormGroup to validate forms-->
+<!-- setting up quick tests-->
+
+<div>Form Contents: {{ control.value | json }}</div>
+<div>Form is valid?: {{ control.valid }}</div>
+<div>Errors around name: {{ control.errors | json}} </div>
