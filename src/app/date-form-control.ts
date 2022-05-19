@@ -1,10 +1,28 @@
 import { FormControl } from "@angular/forms";
 
-export class DateFormControl extends FormControl {
+//*INPUT MASKING
 
+export class DateFormControl extends FormControl {
+    //emitModelToViewChange updates the view for each change
     override setValue(value: string, options: any): void{
-        console.log(value)
-        super.setValue(value + '*',options)
+        if(value.match(/[^0-9|\/]/gi)){
+            super.setValue(this.value, { ...options, emitModelToViewChange: true })
+            return
+        }
+        if(this.value.length === 3 && value.length === 2){
+            super.setValue(this.value, { ...options, emitModelToViewChange: true })
+            return
+        }
+        if(value.length > 5){
+            super.setValue(this.value, { ...options, emitModelToViewChange: true })
+            return
+        }
+        //for each 2 in length, add a / for the expiration date
+        if(value.length === 2){
+            super.setValue(value + '/',{...options, emitModelToViewChange: true })
+            return
+        }
+        
     }
 }
 
