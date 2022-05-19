@@ -4,7 +4,11 @@ import { FormControl } from "@angular/forms";
 
 export class DateFormControl extends FormControl {
     //emitModelToViewChange updates the view for each change
-    override setValue(value: string, options: any): void{
+    override setValue(value: any, options: any): void{
+        if(!value){
+            super.setValue('', { ...options, emitModelToViewChange: true })
+            return
+        }
         if(value.match(/[^0-9|\/]/gi)){
             super.setValue(this.value, { ...options, emitModelToViewChange: true })
             return

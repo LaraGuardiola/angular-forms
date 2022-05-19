@@ -2,7 +2,7 @@
 <div class="field">
     <label class="label">{{ label }}</label>
     <div class="control">
-        <input [ngClass]="{ 'is-danger': showErrors() }"class="input" [formControl]="control"/>
+        <input mask="(000)" [ngClass]="{ 'is-danger': showErrors() }"class="input" [formControl]="control"/>
     </div>
     <ng-container *ngIf="showErrors()">
         <div *ngIf="control.errors!['required']" class="help is-danger">
@@ -18,7 +18,7 @@
             Credit card not valid: {{control.errors!['ccValidator'] | json}}
         </div>
         <div *ngIf="control.errors!['pattern']" class="help is-danger">
-            Credit card not valid: {{control.errors!['pattern'] | json}}
+            Expiration date not valid: {{control.errors!['pattern'] | json}}
         </div>
     </ng-container>
 </div>

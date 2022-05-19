@@ -50,6 +50,10 @@ export class CardFormComponent implements OnInit {
     return (control: AbstractControl) : { [key: string]: string } | null =>  
       this.CcValidationService.luhnCheck(control.value) ? null : { 'ccValidator': control.value }
   }
+
+  onResetClick(){
+    this.cardForm.reset()
+  } 
 }
 
 //more info on control form on angular.io/api/forms/AbstractControl

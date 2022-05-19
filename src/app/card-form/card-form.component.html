@@ -5,6 +5,7 @@
     <app-input label="Expiration" [control]="$any(cardForm.get('expiration'))"></app-input>
     <app-input label="Security Code" [control]="$any(cardForm.get('securityCode'))"></app-input>
     <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
+    <button class="button is-warning" type="button" (click)="onResetClick()">Reset</button>
 </form>
 
 <!-- using [key] we can access many properties of FormGroup to validate forms-->

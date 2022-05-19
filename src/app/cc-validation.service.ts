@@ -7,9 +7,13 @@ import { Injectable } from '@angular/core';
 //*lunhCheck method returns a boolean if its valid cc for 95% of the time
 
 export class CcValidationService {
+  
   constructor() { }
 
-  luhnCheck = (cardNumber: string): any | boolean => {
+  luhnCheck = (cardNumber: any): any | boolean => {
+    if(cardNumber === null){
+      return
+    }
     if(!cardNumber.length){
       return
     }
@@ -25,7 +29,7 @@ export class CcValidationService {
       .slice(0,cardNumber.length - 1)
       .split('')
       .reverse()
-      .map(x => Number(x));
+      .map((x: any) => Number(x));
     
     let sum = 0;
   
@@ -40,7 +44,7 @@ export class CcValidationService {
   
     // 5. Make the sum of obtained values from step 4.
     sum = reverseCardNumber
-      .reduce((acc, currValue) => (acc + currValue), 0);
+      .reduce((acc: any, currValue: any) => (acc + currValue), 0);
   
     // 6. Calculate modulo 10 of the sum from step 5 and the last digit. 
     // If it's 0, you have a valid card number :)
