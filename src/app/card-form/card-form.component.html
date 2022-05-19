@@ -12,4 +12,7 @@
 
 <div>Form Contents: {{ cardForm.value | json }} </div>
 <div>Form is valid?: {{ cardForm.valid }} </div>
+<div>Errors around name: {{ cardForm.controls['name'].errors | json}} </div>
 <div>Errors around credit card: {{ cardForm.controls['cardNumber'].errors | json}} </div>
+<div>Errors around expiration date: {{ cardForm.controls['expiration'].errors | json}} </div>
+<div>Errors around security code: {{ cardForm.controls['securityCode'].errors | json}} </div>

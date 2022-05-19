@@ -17,6 +17,9 @@
         <div *ngIf="control.errors!['ccValidator']" class="help is-danger">
             Credit card not valid: {{control.errors!['ccValidator'] | json}}
         </div>
+        <div *ngIf="control.errors!['pattern']" class="help is-danger">
+            Credit card not valid: {{control.errors!['pattern'] | json}}
+        </div>
     </ng-container>
 </div>
 

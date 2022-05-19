@@ -17,6 +17,7 @@ export class InputComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //will add class is-danger if the control gives all true for all conditions
   showErrors(){
     const { dirty, touched, errors } = this.control
     return dirty && touched && errors

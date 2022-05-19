@@ -21,8 +21,15 @@ export class CardFormComponent implements OnInit {
       Validators.maxLength(16),
       this.ccValidator()
     ]),
-    expiration: new FormControl(''),
-    securityCode: new FormControl(''),
+    expiration: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/)
+    ]),
+    securityCode: new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3)
+    ]),
   })
 
   constructor(private CcValidationService: CcValidationService) { 
@@ -39,9 +46,8 @@ export class CardFormComponent implements OnInit {
   //trying to make a custom validator
   //VALIDATES IF IT'S A VALID CARD OR NOT (WORKS!)
   ccValidator(): ValidatorFn {
-    return (control: AbstractControl) : { [key: string]: string } | null =>  {
-      return this.CcValidationService.luhnCheck(control.value) ? null : { 'ccValidator': control.value }
-    }
+    return (control: AbstractControl) : { [key: string]: string } | null =>  
+      this.CcValidationService.luhnCheck(control.value) ? null : { 'ccValidator': control.value }
   }
 }
 
