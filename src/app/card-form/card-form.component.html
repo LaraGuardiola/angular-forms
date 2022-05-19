@@ -1,11 +1,24 @@
 <!-- formControlName links to the name key of the property of the class-->
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
     <app-input label="Name" [control]="$any(cardForm.get('name'))"></app-input>
-    <app-input label="Card Number" [control]="$any(cardForm.get('cardNumber'))"></app-input>
-    <app-input label="Expiration" [control]="$any(cardForm.get('expiration'))"></app-input>
-    <app-input label="Security Code" [control]="$any(cardForm.get('securityCode'))"></app-input>
-    <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
-    <button class="button is-warning" type="button" (click)="onResetClick()">Reset</button>
+    <div class="columns">
+        <div class="column">
+            <app-input label="Card Number" [control]="$any(cardForm.get('cardNumber'))"></app-input>
+        </div>
+        <div class="column">
+            <app-input label="Expiration" [control]="$any(cardForm.get('expiration'))"></app-input>
+        </div>
+        <div class="column">
+            <app-input label="Security Code" [control]="$any(cardForm.get('securityCode'))"></app-input>
+        </div>
+    </div>
+    
+    
+    <div class="buttons">
+        <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
+        <button class="button is-warning" type="button" (click)="onResetClick()">Reset</button>
+    </div>
+    
 </form>
 
 <!-- using [key] we can access many properties of FormGroup to validate forms-->
