@@ -12,7 +12,7 @@
             Value entered is {{control.errors!['minlength']!.actualLength}} / Min: 3
         </div>
         <div *ngIf="control.errors!['maxlength']" class="help is-danger">
-            Value entered is {{control.errors!['maxlength']!.actualLength}} / Max 5
+            Value entered is {{control.errors!['maxlength']!.actualLength}} / Max: 3
         </div>
         <div *ngIf="control.errors!['ccValidator']" class="help is-danger">
             Credit card not valid: {{control.errors!['ccValidator'] | json}}

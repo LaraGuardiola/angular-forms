@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { CcValidationService } from '../cc-validation.service';
+import { DateFormControl } from '../date-form-control';
 
 @Component({
   selector: 'app-card-form',
@@ -21,7 +22,7 @@ export class CardFormComponent implements OnInit {
       Validators.maxLength(16),
       this.ccValidator()
     ]),
-    expiration: new FormControl('',[
+    expiration: new DateFormControl('',[
       Validators.required,
       Validators.pattern(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/)
     ]),
